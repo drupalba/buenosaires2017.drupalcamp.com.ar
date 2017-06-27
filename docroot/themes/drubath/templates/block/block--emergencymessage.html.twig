@@ -1,0 +1,17 @@
+{% if content.field_message_status.0['#markup'] == '1' %}
+
+	<div id="js-emMsg" class="row emmsg">
+		<div class="large-12 columns">
+
+			{% if content.field_display_title_.0['#markup'] == '1' %}
+				<h2>{{ label }}</h2>
+			{% endif %}
+
+			{{ content.body }}
+
+			<a href="#close" class="emmsg__close" title="Hide message">Close</a>
+
+		</div>
+	</div>
+
+{% endif %}

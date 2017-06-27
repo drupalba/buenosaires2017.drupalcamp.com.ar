@@ -1,0 +1,50 @@
+{% if content.field_extra|render %}
+  {{ attach_library('drubath/overlay') }}
+{% endif %}
+
+{%
+	set classes = [
+		'node',
+		'node--type-' ~ node.bundle|clean_class,
+		view_mode ? 'node--display-' ~ view_mode|clean_class,
+	]
+%}
+
+<div{{ attributes.addClass(classes) }}>
+
+	{% block content %}
+
+        <div class="row">
+          <div id="charlas" class="large-12 large-centered columns">
+
+            {{ content.field_fecha_hora }}
+
+            {% if content.field_extra|render %}
+              <a href="#toggle-info" title="Ver Convocatoria" class="button round success overlay">
+                {% trans %} Convocatoria Abierta! {% endtrans %}
+              </a>
+
+              <div id="toggle-info" class="overlay__insert hidden">
+                <h2 id="modalTitle">
+                  {% trans %} Llamado a charlas {% endtrans %}
+                </h2>
+                {{ content.field_extra }}
+
+                <span class="overlay__close">Cerrar</span>
+              </div>
+            {% endif %}
+
+            {{ content.body }}
+
+            {{ content.field_address }}
+
+            <p><a class="button" href="https://www.meetup.com/es-ES/Buenos-Aires-Drupal-Meetup/events/240913848">Registrarse</a></p>
+
+            {{ drupal_view('charlas', 'page_1') }}
+
+          </div>
+        </div>
+
+	{% endblock %}
+
+</div>

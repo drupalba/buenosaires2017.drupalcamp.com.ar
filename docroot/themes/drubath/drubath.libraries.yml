@@ -1,0 +1,72 @@
+# global files used sitewide
+global:
+  version: 1.x
+  css:
+    theme:
+      css/foundation.css: {}
+      css/style.css: {}
+      css/animate.css: {}
+      css/style.css: {}
+      css/font-awesome.min.css: { minified: true }
+      css/print.css: { media: print }
+  js:
+    js/libs/js.cookie.js: {}
+    js/libs/jquery.pjax.min.js: {}
+    js/libs/jquery.velocity.min.js: {}
+    js/libs/foundation.js: {}
+    js/libs/foundation.topbar.js: {}
+    js/plugins/plugins.emmsg.js: {}
+    js/drubath.global.js: {}
+  dependencies:
+    - core/jquery
+
+# MatchHeight - equalise heights on elements
+# {{ attach_library('drubath/matchheight') }}
+matchheight:
+  version: 1.x
+  js:
+    js/libs/jquery.matchHeight-min.js: {}
+    js/plugins/plugins.matchHeight.js: {}
+
+# Swipebox - modal image/video viewer
+# {{ attach_library('drubath/swipebox') }}
+swipebox:
+  version: 1.x
+  css:
+    theme:
+      css/swipebox.css: {}
+  js:
+    js/libs/jquery.swipebox.min.js: {}
+    js/plugins/plugins.swipebox.js: {}
+
+# Slick - carousels
+# {{ attach_library('drubath/slick') }}
+slick:
+  version: 1.x
+  css:
+    theme:
+      css/slick.css: {}
+  js:
+    js/libs/slick.min.js: {}
+    js/plugins/plugins.slick.js: {}
+
+# Overlay - custom themable overlay
+# {{ attach_library('drubath/overlay') }}
+overlay:
+  version: 1.x
+  css:
+    theme:
+      css/overlay.css: {}
+  js:
+    js/plugins/plugins.overlay.js: {}
+
+# Chosen - better select boxes
+# {{ attach_library('drubath/chosen') }}
+chosen:
+  version: 1.x
+  css:
+    theme:
+      css/chosen.custom.css: {}
+  js:
+    js/libs/chosen.jquery.min.js: {}
+    js/plugins/plugins.chosen.js: {}

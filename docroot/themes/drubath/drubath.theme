@@ -1,0 +1,109 @@
+<?php
+
+/**
+ * Set custom theme options
+ *
+ * Hook_form_system_theme_settings_alter()
+ */
+function drubath_form_system_theme_settings_alter(&$form, \Drupal\Core\Form\FormStateInterface &$form_state, $form_id = NULL) {
+  // Work-around for a core bug affecting admin themes. See issue #943212.
+  if (isset($form_id)) {
+    return;
+  }
+
+  // Custom options
+  $form['custom_options'] = array(
+  	'#type' => 'fieldset',
+  	'#title' => t('Custom Options'),
+    '#description' => t('See /js/plugins/plugins.*.js for plugin usage & options'),
+  );
+
+  // Swipebox Support
+  $form['custom_options']['swipebox'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Swipebox'),
+    '#description' => t('Enable swipebox across site (usage: .swipebox on element to be opened)'),
+    '#default_value' => theme_get_setting('swipebox'),
+  );
+
+  // Slick.js Support
+  $form['custom_options']['slick'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Slick'),
+    '#description' => t('Enable slick.js carousel (usage: .slick as wrapper)'),
+    '#default_value' => theme_get_setting('slick'),
+  );
+
+  // MatchHeight.js Support
+  $form['custom_options']['matchHeight'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('MatchHeight'),
+    '#description' => t('Enable matchHeight.js for equalising element heights (usage: .matchHeight on element to be affected)'),
+    '#default_value' => theme_get_setting('matchHeight'),
+  );
+
+  // Overlay.js Support
+  $form['custom_options']['overlay'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Overlay'),
+    '#description' => t('Enable custom overlay template (see plugins.overlay.js for usage)'),
+    '#default_value' => theme_get_setting('overlay'),
+  );
+
+  // Shocen.js Support
+  $form['custom_options']['chosen'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Chosen'),
+    '#description' => t('Enable Chosen.js plugin (see plugins.chosen.js for usage)'),
+    '#default_value' => theme_get_setting('chosen'),
+  );
+}
+
+
+/**
+ * Hook_preprocess_html()
+ */
+function drubath_preprocess_html(&$variables) {
+
+	// Load libraries based on theme settings
+	if (theme_get_setting('matchHeight') == 1){
+		$variables['#attached']['library'][] = 'drubath/matchheight';
+	}
+	if (theme_get_setting('swipebox') == 1){
+		$variables['#attached']['library'][] = 'drubath/swipebox';
+	}
+	if (theme_get_setting('slick') == 1){
+		$variables['#attached']['library'][] = 'drubath/slick';
+	}
+	if (theme_get_setting('overlay') == 1){
+		$variables['#attached']['library'][] = 'drubath/overlay';
+	}
+  if (theme_get_setting('chosen') == 1){
+    $variables['#attached']['library'][] = 'drubath/chosen';
+  }
+
+}
+
+/**
+ * Hook_preprocess_page()
+ */
+function drubath_preprocess_page(&$variables) {
+
+	// If overlay enabled, create var for page.html.twig
+	$variables['plugin_overlay'] = theme_get_setting('overlay');
+
+}
+/**
+ * Hook_preprocess_field()
+ */
+// function drubath_preprocess_field(&$variables, $hook) {
+//   $element = $variables['element'];
+//   if ($element['#field_type'] == 'email' && $element['#field_name'] == 'field_contacto') {
+//     foreach ($variables['items'] as $key => $item) {
+//       $variables['items'][$key]['content']['#options']['attributes']['class'][] = 'fa fa-envelope';
+//       //we override email field title
+//       $item['content']['#title'] = t('E-Mail');
+//       kint($item);
+//     }
+//   }
+// }

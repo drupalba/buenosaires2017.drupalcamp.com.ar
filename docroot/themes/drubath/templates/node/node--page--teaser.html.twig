@@ -1,0 +1,15 @@
+{% extends "node.html.twig" %}
+
+{% block content %}
+
+	<a href="{{ url }}" title="Open {{ node.title.value }}">
+		
+		<h3>{{ node.title.value }}</h3>
+
+		{% if content.body %}
+			{{ content.body }}
+		{% endif %}
+
+	</a>
+
+{% endblock %}

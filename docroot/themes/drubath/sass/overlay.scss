@@ -1,0 +1,63 @@
+/* --- Include setup file --- */
+@import 'setup';
+
+// --------------------------------
+//					   		OVERLAY
+// --------------------------------
+
+.freeze {
+	overflow:hidden;
+}
+
+.overlay__wrapper {
+	display:none; 
+	position:fixed; 
+	height:100%; 
+	width:100%; 
+	top:0; 
+	left:0;
+	background-color:rgba(0,0,0,0.6); 
+	z-index:9999; 
+	text-align:center; 
+	cursor:pointer;
+    overflow-y: scroll;
+}
+
+.overlay__close {
+	@include rm-text;
+	@include bg-img;
+	position:absolute;
+	top:1em;
+	right:1em;
+	display:block;
+	height:30px;
+	width: 30px;
+	background-image:url('../images/emClose.png');
+	cursor:pointer;
+	transition:opacity 0.2s ease-out;
+
+	&:hover {
+		opacity:0.7;
+	}
+}
+
+.overlay__insert {
+	background:#fff; 
+	cursor:default; 
+	position:relative; 
+	display:inline-block; 
+	width:auto;
+	max-width:95%;
+	height:auto; 
+	text-align:left; 
+	padding:30px;
+
+	@include media('<=small'){
+		padding:15px;
+
+		.overlay__close {
+			right:15px;
+			top:15px;
+		}
+	}
+}

@@ -1,0 +1,8 @@
+{% for item in items %}
+  <li class="fa fa-envelope">
+    <a href="{{ item.content['#url'] }}">
+      {% trans %} E-mail {% endtrans %}
+    </a>
+  </li>
+{% endfor %}
+

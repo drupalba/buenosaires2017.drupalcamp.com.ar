@@ -1,0 +1,100 @@
+/* --- Include setup files --- */
+@import 'include-media';
+
+// --------------------------------
+//					   		  SETUP
+// --------------------------------
+
+// Set global row max-width for design
+.row {
+	max-width: 71.25em;
+}
+
+/* --- Mixins --- */
+
+// Reset <li> elements
+@mixin li-reset {
+	list-style:none; 
+	margin:0; 
+	padding:0;
+	
+	li {
+		list-style:none; 
+		margin:0; 
+		padding:0;
+	}
+}
+
+// Remove text from elements
+@mixin rm-text {
+	text-align:left;
+	text-indent:-9999px;
+}
+
+// Remove li bottom margin
+@mixin li-margin($columns, $marginBottom) {
+	&:nth-last-child(-n + #{$columns}):nth-child(#{$columns}n + 1),
+	&:nth-last-child(-n + #{$columns}):nth-child(#{$columns}n + 1) ~ li {
+		margin-bottom:$marginBottom;
+	}
+}
+
+// Centered background images
+@mixin bg-img {
+	background-position:center center;
+	background-repeat:no-repeat;
+	background-size:contain;
+}
+
+// IE 9+ only
+@mixin ie($property, $value) {
+	@media screen and (min-width:0\0) and (min-resolution: +72dpi) {
+		#{$property}: #{$value};
+	}
+}
+
+
+/* --- Variables --- */
+$text: #000000;
+$bg: #fff;
+
+// padding used in foundation
+$bump:0.9375em;
+
+
+/* --- Fonts --- */
+
+// @font-face blah here...
+
+@mixin font-body {
+	font-size:16px;
+}
+
+@mixin font-bold {
+	font-weight:normal;
+}
+
+@mixin font-title {
+	font-weight:400;
+}
+
+/* --- Media queries --- */
+
+//	USAGE:
+//
+//	@include media(">tabletland", "<=1150px") {
+//		font-size: 4.0rem;
+//	}
+// 
+//	@include media("<mobile") {
+//		width: 100%;
+//	}
+
+$breakpoints: (
+	small: 480px, 
+	mobile: 768px, 
+	tabletport: 800px,
+	tabletland: 1025px
+);
+
+

@@ -1,0 +1,13 @@
+diff --git a/src/Plugin/Field/FieldFormatter/SmartTrimFormatter.php b/src/Plugin/Field/FieldFormatter/SmartTrimFormatter.php
+index 55c7eff..f2b93bd 100644
+--- a/src/Plugin/Field/FieldFormatter/SmartTrimFormatter.php
++++ b/src/Plugin/Field/FieldFormatter/SmartTrimFormatter.php
+@@ -209,7 +209,7 @@ class SmartTrimFormatter extends FormatterBase {
+       // But wait! Don't add a more link if the field ends in <!--break-->.
+       if ($uri && $this->getSetting('more_link') && strpos(strrev($output), strrev('<!--break-->')) !== 0) {
+         $more = $this->getSetting('more_text');
+-        $class = $this->getSetting('more_text');
++        $class = $this->getSetting('more_class');
+ 
+         $project_link = Link::fromTextAndUrl($more, $uri);
+         $project_link = $project_link->toRenderable();

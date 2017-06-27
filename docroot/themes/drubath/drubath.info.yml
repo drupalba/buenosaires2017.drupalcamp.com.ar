@@ -1,0 +1,18 @@
+name: drubath
+type: theme
+description: drubath base theme
+base theme: stable
+core: 8.x
+libraries:
+  - drubath/global
+
+regions:
+  header: Header
+  nav: Navigation
+  admin: Admin
+  content: Content
+  emergency: 'Emergency message'
+  highlighted: Highlighted
+  help: Help
+  footer: Footer
+  hidden: Hidden

@@ -1,0 +1,12 @@
+<ul class="listing gallery">
+	{% for item in items %}
+		<li>
+		  	<a class="swipebox" href="{{ file_url(item.content['#item'].entity.uri.value) }}" title="{{ item.content['#item'].alt }}" target="_blank">
+		        
+		        {% set image = image_style(item.content['#item'].entity.fid.value, ['gallery']) %}
+		        <img src="{{ image.gallery }}" alt="{{ item.content['#item'].alt }}">
+
+		    </a>
+		</li>
+	{% endfor %}
+</ul>

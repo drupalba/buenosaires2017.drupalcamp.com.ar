@@ -1,0 +1,23 @@
+{% extends "eck-entity--extra-content.html.twig" %}
+
+{% block content %}
+
+	<div class="row">
+		<div class="large-12 columns">
+
+			{% if not entity.field_display_title.0['#markup'] == null %}
+				<h2>{{ entity.title }}</h2>
+			{% endif %}
+
+			<blockquote>
+				{{ entity.field_quote }}
+
+				{% if entity.field_author %}
+					<cite>{{ entity.field_author }}</cite>
+				{% endif %}
+			</blockquote>
+
+		</div>
+	</div>
+
+{% endblock %}

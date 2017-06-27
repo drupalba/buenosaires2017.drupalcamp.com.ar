@@ -1,0 +1,26 @@
+{%
+	set classes = [
+		'entity',
+		'entity--type-' ~ entity['#extra_content'].type.value.0['target_id']|clean_class,
+	]
+%}
+
+<section{{ attributes.addClass(classes) }}>
+
+	{% block content %}
+
+		<div class="row">
+			<div class="large-12 columns">
+
+				{% if not entity.field_display_title.0['#markup'] == null %}
+					<h2>{{ entity.title }}</h2>
+				{% endif %}
+
+				{{ entity }}
+
+			</div>
+		</div>
+
+	{% endblock %}
+
+</section>
